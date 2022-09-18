@@ -1,14 +1,13 @@
-import "module-alias/register";
 import Koa from "koa";
 import dotenv from "dotenv";
 
+import { client } from "./db";
 import middleware from "./middlewares";
 import route from "./routes";
-import DB from "./db";
 
 dotenv.config();
 
-new DB().connectDB(() => {
+client.connect().then(() => {
   const app = new Koa();
   middleware(app);
   route(app);

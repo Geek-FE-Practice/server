@@ -1,20 +1,11 @@
-import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 
-export default class DB {
-  connectDB(cb: () => void): void {
-    const connectionString = process.env.CONNECTION_STRING as string;
+const connectionString =
+  (process.env.CONNECTION_STRING as string) || "mongodb://localhost:27017/test";
 
-    mongoose.connect(connectionString, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      useFindAndModify: false
-    });
+export const client = new MongoClient(connectionString);
+export const db = client.db("officialWebsite");
 
-    const db = mongoose.connection;
-
-    db.on("error", console.error.bind(console, "connection error:"));
-    db.once("open", function () {
-      cb()
-    });
-  }
-}
+process.on("exit", () => {
+  client.close();
+});
