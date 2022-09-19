@@ -1,11 +1,12 @@
+import "module-alias/register";
 import Koa from "koa";
 import dotenv from "dotenv";
+
+dotenv.config();
 
 import { client } from "./db";
 import middleware from "./middlewares";
 import route from "./routes";
-
-dotenv.config();
 
 client.connect().then(() => {
   const app = new Koa();
