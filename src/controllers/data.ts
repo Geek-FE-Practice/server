@@ -50,8 +50,12 @@ class DataController {
         preSpm,
       };
     });
-
-    await spms.insertMany(insetData);
+    try {
+      await spms.insertMany(insetData);
+      ctx.status = 204;
+    } catch (error) {
+      ctx.status = 500;
+    }
   };
 
   savePv = async (ctx: ParameterizedContext) => {
@@ -82,11 +86,16 @@ class DataController {
       };
     }
 
-    await pvdatas.insertOne({
-      spm,
-      preSpm,
-      time: Math.floor(Date.now() / 1000),
-    });
+    try {
+      await pvdatas.insertOne({
+        spm,
+        preSpm,
+        time: Math.floor(Date.now() / 1000),
+      });
+      ctx.status = 204;
+    } catch (error) {
+      ctx.status = 500;
+    }
   };
 }
 
