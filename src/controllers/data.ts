@@ -3,12 +3,6 @@ import type { ParameterizedContext } from "koa";
 import { spms } from "@models/spm";
 import { pvdatas } from "@models/pv";
 
-interface State {
-  user: {
-    _id: string;
-  };
-}
-
 class DataController {
   /** 保存 spm 数据 */
   saveSpm = async (ctx: ParameterizedContext) => {
