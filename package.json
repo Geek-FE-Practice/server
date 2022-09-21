@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node dist/index.js",
+    "build": "tsc",
     "dev:build": "tsc --project tsconfig.development.json",
     "dev:serve": "cross-env NODE_ENV=development nodemon --watch dist dist/index.js",
-    "build": "tsc",
     "commit": "cz",
     "lint": "eslint",
     "test": "jest"
