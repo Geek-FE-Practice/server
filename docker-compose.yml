@@ -2,6 +2,19 @@
 version: "3.1"
 
 services:
+  server-app:
+    build: .
+    environment:
+      - CONNECTION_STRING=mongodb://root:example@mongo:27017/
+    image: server-app
+    depends_on:
+      - mongo
+    ports:
+      - 8000:8000
+    networks:
+      - spm
+    command: node dist/index.js
+
   mongo:
     image: mongo:latest
     restart: always
@@ -12,6 +25,10 @@ services:
       - 27017:27017
     volumes:
       - "mongodb_data:/data/db"
-
+    networks:
+      - spm
 volumes:
   mongodb_data:
+
+networks:
+  spm:

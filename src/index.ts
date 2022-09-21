@@ -1,8 +1,5 @@
 import "module-alias/register";
 import Koa from "koa";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 import { client } from "./db";
 import middleware from "./middlewares";

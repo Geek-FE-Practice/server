@@ -9,6 +9,7 @@ FROM node:16-alpine AS production
 COPY --from=builder /server/package.json /server/package.json
 COPY --from=builder /server/package-lock.json /server/package-lock.json
 COPY --from=builder /server/dist /server/dist
+COPY --from=builder /server/wait-for-it.sh /server/wait-for-it.sh
 WORKDIR /server
 RUN npm config set registry https://registry.npmmirror.com && \
     npm install --production
