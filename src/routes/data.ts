@@ -7,5 +7,6 @@ const router = new Router({
 
 router.post("/spm", dataController.saveSpm);
 router.post("/pv", dataController.savePv);
+router.get("/funnelChart", dataController.getFunnelChartData);
 
 export default router;
