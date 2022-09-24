@@ -4,6 +4,7 @@ import Koa from "koa";
 import { client } from "./db";
 import middleware from "./middlewares";
 import route from "./routes";
+import "./schedule/index";
 
 client.connect().then(() => {
   const app = new Koa();
