@@ -244,10 +244,10 @@ class DataController {
         spm: element.spm,
         date: element.date,
         funnelChart: [
-          { label: `${element.spm.d}点击次数`, count: element.total },
-          { label: `${element.spm.c}点击次数`, count: element.level3[0].total },
-          { label: `${element.spm.b}点击次数`, count: element.level2[0].total },
-          { label: `${element.spm.a}点击次数`, count: element.level1[0].total },
+          { label: `${element.spm.d}点位点击`, count: element.total },
+          { label: `${element.spm.c}区块曝光`, count: element.level3[0].total },
+          { label: `${element.spm.b}页面访问`, count: element.level2[0].total },
+          { label: `${element.spm.a}站点访问`, count: element.level1[0].total },
         ],
       };
     });
