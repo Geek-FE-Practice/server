@@ -241,7 +241,7 @@ class DataController {
 
     const tmp = data.map((element) => {
       return {
-        spm: element.smp,
+        spm: element.spm,
         date: element.date,
         funnelChart: [
           { label: `${element.spm.d}点击次数`, count: element.total },
